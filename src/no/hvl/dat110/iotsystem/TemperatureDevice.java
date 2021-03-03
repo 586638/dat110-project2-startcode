@@ -19,12 +19,23 @@ public class TemperatureDevice {
 		// - connect to the broker
 		// - publish the temperature(s)
 		// - disconnect from the broker
-
+		
 		// TODO - end
 
+		Client client = new Client("temperaturesensor", Common.BROKERHOST, Common.BROKERPORT);
+
+		client.connect();
+
+		for(int i = 0; i < COUNT; i++) {
+			Integer temp = sn.read();
+			client.publish(Common.TEMPTOPIC, temp.toString());
+		}
+
+		client.disconnect();
+		
 		System.out.println("Temperature device stopping ... ");
 
-		throw new UnsupportedOperationException(TODO.method());
+		
 
 	}
 }

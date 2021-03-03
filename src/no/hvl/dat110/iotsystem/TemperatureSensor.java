@@ -12,4 +12,9 @@ public class TemperatureSensor {
 
 		return (int) Math.ceil(temp);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }
